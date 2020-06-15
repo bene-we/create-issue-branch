@@ -3,7 +3,7 @@ const utils = require('./utils')
 const context = require('./context')
 
 async function createIssueBranch (app, ctx, config) {
-  const branchName = await getBranchNameFromIssue(ctx, config, app.log)
+  const branchName = await getBranchNameFromIssue(ctx, config)
   if (await branchExists(ctx, branchName)) {
     await addComment(ctx, config, 'Branch already exists')
   } else {
@@ -12,10 +12,9 @@ async function createIssueBranch (app, ctx, config) {
   }
 }
 
-async function getBranchNameFromIssue (ctx, config, log) {
+async function getBranchNameFromIssue (ctx, config) {
   const number = context.getIssueNumber(ctx)
   const title = context.getIssueTitle(ctx)
-  log(`debug: ${title}, ${config.branchName}`)
   let result
   if (config.branchName) {
     if (config.branchName === 'tiny') {
