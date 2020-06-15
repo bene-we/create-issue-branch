@@ -23,6 +23,8 @@ async function getBranchNameFromIssue (ctx, config) {
       result = `issue-${number}`
     } else if (config.branchName === 'full') {
       result = `issue-${number}-${title}`
+    } else if (config.branchName === 'custom') {
+      result = `${number}-${title.toLowerCase()}`
     } else {
       result = utils.interpolate(config.branchName, ctx.payload)
     }
