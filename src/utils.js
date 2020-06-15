@@ -2,13 +2,13 @@ const AWS = require('aws-sdk')
 
 function makePrefixGitSafe (s) {
   const regexp = /(?![-/])[\W]+/g
-  return trim(s, ' ').replace(regexp, '_')
+  return trim(s, ' ').replace(regexp, '-')
 }
 
 function makeGitSafe (s) {
   const regexp = /(?![-/])[\W]+/g
-  const result = trim(s, ' ').replace(regexp, '_').replace(/[/]+$/, '')
-  return trim(result, '_')
+  const result = trim(s, ' ').replace(regexp, '-').replace(/[/]+$/, '')
+  return trim(result, '-')
 }
 
 function trim (str, ch) {
