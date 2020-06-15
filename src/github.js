@@ -15,7 +15,7 @@ async function createIssueBranch (app, ctx, config) {
 async function getBranchNameFromIssue (ctx, config) {
   const number = context.getIssueNumber(ctx)
   const title = context.getIssueTitle(ctx)
-  log('debug: ', title, config.branchName)
+  log(`debug: ${title}, ${config.branchName}`)
   let result
   if (config.branchName) {
     if (config.branchName === 'tiny') {
